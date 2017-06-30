@@ -5,8 +5,7 @@ $usuario = "root";
 $senha = "";
 $bd = "bd_hospital";
 
-$link = mysql_connect($host, $usuario, $senha);
-$db = mysql_select_db($bd,$link);
+$link = mysqli_connect($host, $usuario, $senha, $bd);
 
 if(!$link){
     echo "Erro ao conectar ao banco de dados!";

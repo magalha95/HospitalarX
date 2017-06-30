@@ -101,6 +101,7 @@
                   </label>
                   <input class="form-control" id="dataMedico" name="dataMedico" placeholder="MM/DD/YYYY" type="text"/>
                  </div>
+
                  <div class="form-group ">
                   <label class="control-label " for="ruaMedico">
                    Rua
@@ -114,6 +115,7 @@
                   </label>
                   <input class="form-control" id="numeroMedico" name="numeroMedico" placeholder="Digite um numero..." type="text"/>
                  </div>
+
                  <div class="form-group ">
                   <label class="control-label " for="bairroMedico">
                    Bairro
@@ -127,6 +129,7 @@
                   </label>
                   <input class="form-control" id="cepMedico" name="cepMedico" placeholder="Digite um CEP..." type="text"/>
                  </div>
+
                  <div class="form-group ">
                   <label class="control-label " for="cidadeMedico">
                    Cidade
@@ -140,6 +143,7 @@
                   </label>
                   <input class="form-control" id="estadoMedico" name="estadoMedico" placeholder="Digite um estado..." type="text"/>
                  </div>
+                 
                  <div class="form-group ">
                   <label class="control-label " for="paisMedico">
                    Pa&iacute;s
