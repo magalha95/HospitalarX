@@ -33,8 +33,8 @@
         <script src="/HospitalarX/js/jquery-2.1.1.min.js"></script>
         <script src="/HospitalarX/bootstrap/js/bootstrap.min.js"></script>
         <script src="/HospitalarX/js/jquery.appear.js"></script>
-        <script src="/HospitalarX/js/contact_me.js"></script>
-        <script src="/HospitalarX/js/jqBootstrapValidation.js"></script>
+        <!-- <script src="/HospitalarX/js/contact_me.js"></script> -->
+        <!-- <script src="/HospitalarX/js/jqBootstrapValidation.js"></script> -->
         <script src="/HospitalarX/js/modernizr.custom.js"></script>
         <script src="/HospitalarX/js/script.js"></script>
 
@@ -67,7 +67,7 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="HospitalarX/app/controllers/administrador/cadastroMedico.php">
+            <form method="POST" action="../../controllers/administrador/cadastroMedico.php">
                  <div class="form-group ">
                   <label class="control-label requiredField" for="registroMedico">
                    Registro M&eacute;dico
