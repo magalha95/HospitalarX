@@ -1,17 +1,22 @@
 <?php
 
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$bd = "bd_hospital";
+function conectar(){
+	$host = "localhost";
+	$usuario = "root";
+	$senha = "";
+	$bd = "bd_hospital";
+	$link = mysql_connect($host, $usuario, $senha);
+	mysql_select_db($bd);	
+}
 
-$link = mysqli_connect($host, $usuario, $senha, $bd);
+function desconectar(){
+	mysql_close($link);
+}
 
-if(!$link){
-    echo "Erro ao conectar ao banco de dados!";
-    exit();
-}else{
-	echo "Sucesso!!!";
-};
+function executar($sql_code){
+	conectar();
+	return mysql_query($sql_code);
+	desconectar();
+}
 
 ?>

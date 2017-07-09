@@ -37,7 +37,7 @@
         <!-- <script src="/HospitalarX/js/jqBootstrapValidation.js"></script> -->
         <script src="/HospitalarX/js/modernizr.custom.js"></script>
         <script src="/HospitalarX/js/script.js"></script>
-
+        <script src="/HospitalarX/js/jquery.mask.js"></script>  
     </head>
 
     <body>
@@ -75,7 +75,7 @@
                     *
                    </span>
                   </label>
-                  <input class="form-control" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
+                  <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
                  </div>
                  
                  <div class="form-group ">
@@ -92,14 +92,14 @@
                   <label class="control-label " for="cpfMedico">
                    CPF
                   </label>
-                  <input class="form-control" id="cpfMedico" name="cpfMedico" placeholder="Digite um cpf..." type="text"/>
+                  <input class="form-control cpf" id="cpfMedico" name="cpfMedico" placeholder="Digite um cpf..." type="text"/>
                  </div>
              
                  <div class="form-group ">
                   <label class="control-label " for="dataMedico">
                    Data Nascimento
                   </label>
-                  <input class="form-control" id="dataMedico" name="dataMedico" placeholder="MM/DD/YYYY" type="text"/>
+                  <input class="form-control date" id="dataMedico" name="dataMedico" placeholder="MM/DD/YYYY" type="text"/>
                  </div>
 
                  <div class="form-group ">
@@ -113,7 +113,7 @@
                   <label class="control-label " for="numeroMedico">
                    Numero
                   </label>
-                  <input class="form-control" id="numeroMedico" name="numeroMedico" placeholder="Digite um numero..." type="text"/>
+                  <input class="form-control number" id="numeroMedico" name="numeroMedico" placeholder="Digite um numero..." type="text"/>
                  </div>
 
                  <div class="form-group ">
@@ -127,7 +127,7 @@
                   <label class="control-label " for="cepMedico">
                    CEP
                   </label>
-                  <input class="form-control" id="cepMedico" name="cepMedico" placeholder="Digite um CEP..." type="text"/>
+                  <input class="form-control cep" id="cepMedico" name="cepMedico" placeholder="Digite um CEP..." type="text"/>
                  </div>
 
                  <div class="form-group ">
@@ -141,7 +141,36 @@
                   <label class="control-label " for="estadoMedico">
                    Estado
                   </label>
-                  <input class="form-control" id="estadoMedico" name="estadoMedico" placeholder="Digite um estado..." type="text"/>
+                  <select  class="form-control" id="estadoMedico" name="estadoMedico"> 
+                    <option value="estado">Selecione o Estado</option> 
+                    <option value="ac">Acre</option> 
+                    <option value="al">Alagoas</option> 
+                    <option value="am">Amazonas</option> 
+                    <option value="ap">Amapá</option> 
+                    <option value="ba">Bahia</option> 
+                    <option value="ce">Ceará</option> 
+                    <option value="df">Distrito Federal</option> 
+                    <option value="es">Espírito Santo</option> 
+                    <option value="go">Goiás</option> 
+                    <option value="ma">Maranhão</option> 
+                    <option value="mt">Mato Grosso</option> 
+                    <option value="ms">Mato Grosso do Sul</option> 
+                    <option value="mg">Minas Gerais</option> 
+                    <option value="pa">Pará</option> 
+                    <option value="pb">Paraíba</option> 
+                    <option value="pr">Paraná</option> 
+                    <option value="pe">Pernambuco</option> 
+                    <option value="pi">Piauí</option> 
+                    <option value="rj">Rio de Janeiro</option> 
+                    <option value="rn">Rio Grande do Norte</option> 
+                    <option value="ro">Rondônia</option> 
+                    <option value="rs">Rio Grande do Sul</option> 
+                    <option value="rr">Roraima</option> 
+                    <option value="sc">Santa Catarina</option> 
+                    <option value="se">Sergipe</option> 
+                    <option value="sp">São Paulo</option> 
+                    <option value="to">Tocantins</option> 
+                  </select>
                  </div>
                  
                  <div class="form-group ">
@@ -179,7 +208,22 @@
             </div>
         </div>
         <!-- End Copyright Section -->
-
+        <script type="text/javascript">
+        $('.number').mask('######', {'translation': {
+                                        Y: {pattern: /[0-9]/}
+                                      }
+                                })
+          $(document).ready(function(){
+          $('.date').mask('00/00/0000');
+          $('.crm').mask('0000000');
+          $('.cep').mask('00000-000');
+          $('.phone').mask('(00) 0000-0000');
+          $('.cpf').mask('000.000.000-00', {reverse: true});
+          $('.money').mask('000.000.000.000.000,00', {reverse: true});
+          $('.money2').mask("#.##0,00", {reverse: true});
+          $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
+        });
+        </script>
     </body>
 
 </html>
