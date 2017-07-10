@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Cadastrar Enfermeiro</title>
+        <title>Relatório sobre  Pacientes</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Cadastrar Enfermeiro</h1>
+                            <h1>Relatório sobre  Pacientes</h1>
                         </div>
                     </div>
                 </div>
@@ -67,105 +67,42 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/cadastroEnfermeiro.php">
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="registroEnfermeiro">
-                   Registro Enfermeiro
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control crm" id="registroEnfermeiro" name="registroEnfermeiro" placeholder="Digite um registro..." type="text"/>
-                 </div>
+
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                            <h2>Suas Informações:</h2>
+                              <?php 
+                                include ("../../conexao.php");
+                                $sql_code = mysql_query();
+                                $result = executar($sql_code);
+                                echo "<table>";
+                                while($exibe = mysql_fetch_assoc($sql)){
+                                  echo "<tr><td>Nome:</td>";
+                                  echo "<td>".$exibe["Nome"]."</td></tr>";
+                                }
+                                echo "</table>";
+                              ?>
+            </div>
+            
+            <form method="POST" action="../../controllers/administrador/obterRelatoriosMedico.php">
                  
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="nomeEnfermeiro">
-                   Nome
+                  <label class="control-label requiredField" for="letraInicial">
+                   Digite uma Letra para obter os Pacientes :
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control" id="nomeEnfermeiro" name="nomeEnfermeiro" placeholder="Digite um nome..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label " for="cpfEnfermeiro">
-                   CPF
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control cpf" id="cpfEnfermeiro" name="cpfEnfermeiro" placeholder="Digite um cpf..." type="text"/>
-                 </div>
-             
-                 <div class="form-group ">
-                  <label class="control-label " for="dataEnfermeiro">
-                   Data Nascimento
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control date" id="dataEnfermeiro" name="dataEnfermeiro" placeholder="MM/DD/YYYY" type="text"/>
+                  <input class="form-control soletras" id="letraInicial" name="letraInicial" placeholder="Digite uma letra..." type="text"/>
                  </div>
 
-                 <div class="form-group ">
-                  <label class="control-label " for="ruaEnfermeiro">
-                   Rua
+                  <div class="form-group ">
+                  <label class="control-label " for="obterEstado">
+                   OU selecione um Estado para obter os Pacientes:
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control" id="ruaEnfermeiro" name="ruaEnfermeiro" placeholder="Digite uma rua..." type="text"/>
-                 </div>
-             
-                 <div class="form-group ">
-                  <label class="control-label " for="numeroEnfermeiro">
-                   Numero
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control number" id="numeroEnfermeiro" name="numeroEnfermeiro" placeholder="Digite um numero..." type="text"/>
-                 </div>
-
-                 <div class="form-group ">
-                  <label class="control-label " for="bairroEnfermeiro">
-                   Bairro
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control" id="bairroEnfermeiro" name="bairroEnfermeiro" placeholder="Digite um bairro..." type="text"/>
-                 </div>
-             
-                 <div class="form-group ">
-                  <label class="control-label " for="cepEnfermeiro">
-                   CEP
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control cep" id="cepEnfermeiro" name="cepEnfermeiro" placeholder="Digite um CEP..." type="text"/>
-                 </div>
-
-                 <div class="form-group ">
-                  <label class="control-label " for="cidadeEnfermeiro">
-                   Cidade
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control" id="cidadeEnfermeiro" name="cidadeEnfermeiro" placeholder="Digite uma cidade" type="text"/>
-                 </div>
-             
-                 <div class="form-group ">
-                  <label class="control-label " for="estadoEnfermeiro">
-                   Estado
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <select  class="form-control" id="estadoEnfermeiro" name="estadoEnfermeiro"> 
+                  <select  class="form-control" id="obterEstado" name="obterEstado"> 
                     <option value="estado">Selecione o Estado</option> 
                     <option value="ac">Acre</option> 
                     <option value="al">Alagoas</option> 
@@ -198,14 +135,17 @@
                  </div>
                  
                  <div class="form-group ">
-                  <label class="control-label " for="paisEnfermeiro">
-                   Pa&iacute;s
+                  <label class="control-label requiredField" for="obterPais">
+                   OU digite um país para obter os Pacientes:
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control" id="paisEnfermeiro" name="paisEnfermeiro" placeholder="Digite um pa&iacute;s..." type="text"/>
+                  <input class="form-control" id="obterPais" name="obterPais" placeholder="Digite um estado..." type="text"/>
                  </div>
+
+                 
+
 
                  <div class="form-group">
                   <div>
@@ -249,6 +189,10 @@
           $('.money').mask('000.000.000.000.000,00', {reverse: true});
           $('.money2').mask("#.##0,00", {reverse: true});
           $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
+          $('.soletras').mask('A', {'translation': {
+                                        A: {pattern: /[A-Za-z]/},
+                                      }
+          });
         });
         </script>
     </body>

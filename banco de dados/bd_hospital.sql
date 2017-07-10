@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2017 at 05:03 
+-- Generation Time: Jul 11, 2017 at 12:09 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -84,7 +84,13 @@ CREATE TABLE `Endereco` (
 
 INSERT INTO `Endereco` (`idPessoa`, `rua`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `pais`) VALUES
 (48, 'Rua Padre Machado', 258, 'Bela Vista', 36301, 'SÃ£o JoÃ£o del Rei', 'mg', 'Brasil'),
-(49, 'sadasdasda', 213213, 'sasadasd', 21732, 'ahbdasduiasdubas', 'mg', 'xasxdsadd');
+(49, 'sadasdasda', 213213, 'sasadasd', 21732, 'ahbdasduiasdubas', 'mg', 'xasxdsadd'),
+(50, 'sei la', 1212, 'hbasudasdu', 21312, 'safasfa', 'am', 'sdiciosdafoijsdi'),
+(51, 'Av Leite de Castro', 123, 'Fabricas', 36301, 'SÃ£o JoÃ£o del Rei', 'mg', 'Brasil'),
+(52, 'seila', 212332, 'jsadbjuasda', 21234, 'rtgyhujk', 'mg', 'bdasyudvyuasdyvusady'),
+(53, 'usdfbusdfhb', 2121, 'uewfuiwefw', 21345, 'jsabsabacsacnjcsank', 'ma', 'Brasil'),
+(54, 'sajbdubasdub', 21312, '', 21389, 'sajdbasdbj', 'pa', 'USA'),
+(55, 'ksfdfhisfnh', 2147483647, 'ihafhioahi', 21389, 'weihfwehif', 'ac', 'USA');
 
 -- --------------------------------------------------------
 
@@ -97,9 +103,17 @@ CREATE TABLE `Enfermeiro` (
   `cpf` bigint(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `dataNasc` date DEFAULT NULL,
-  `horasPlantao` varchar(45) NOT NULL,
+  `horasPlantao` time NOT NULL,
   `Endereco_idPessoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Enfermeiro`
+--
+
+INSERT INTO `Enfermeiro` (`registro`, `cpf`, `nome`, `dataNasc`, `horasPlantao`, `Endereco_idPessoa`) VALUES
+(7347328, 278361, 'Valney', '0000-00-00', '23:16:12', 54),
+(8234234, 821744, 'Valney', '0000-00-00', '98:27:37', 55);
 
 -- --------------------------------------------------------
 
@@ -145,6 +159,10 @@ CREATE TABLE `Medico` (
 
 INSERT INTO `Medico` (`registro`, `cpf`, `nome`, `dataNasc`, `Endereco_idPessoa`) VALUES
 (1111111, 222222, 'ola', '0000-00-00', 49),
+(1223133, 314431, 'MiQuerido', '1991-11-05', 51),
+(1231231, 762378, 'Rodrigo', '0000-00-00', 50),
+(1234567, 234567, 'Samuel', '0000-00-00', 53),
+(3456789, 234567, 'Carlos Magno', '0000-00-00', 52),
 (7777777, 108705, 'Italo MagalhÃ£es da Silva', '1995-02-01', 48);
 
 -- --------------------------------------------------------
@@ -266,7 +284,7 @@ ALTER TABLE `Consulta`
 -- AUTO_INCREMENT for table `Endereco`
 --
 ALTER TABLE `Endereco`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `Enfermeiro_has_Cirurgia`
 --

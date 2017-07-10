@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Cadastrar Leito</title>
+        <title>Relatório sobre  Cirúrgias</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Cadastrar Leito</h1>
+                            <h1>Relatório sobre  Cirúrgias</h1>
                         </div>
                     </div>
                 </div>
@@ -67,38 +67,24 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/cadastroLeito.php">
-                  <div class="form-group ">
-                  <label class="control-label " for="tipoLeito">
-                   Tipo de Leito:
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <select  class="form-control" id="tipoLeito" name="tipoLeito"> 
-                    <option value="estado">Selecione o Leito</option> 
-                    <option value="uti">Leito UTI</option> 
-                    <option value="quarto">Leito Quarto</option> 
-                    <option value="cirurgico">Leito Cirurgico</option>  
-                  </select>
-                 </div>
 
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="objetosLeito">
-                   Digite os objetos do leito :
-                  </label>
-                  <input class="form-control codCons" id="objetosLeito" name="objetosLeito" placeholder="Digite um registro..." type="text"/>
-                 </div>             
-                 
-                 <div class="form-group">
-                  <div>
-                   <button class="btn btn-primary" name="enviar" type="submit">
-                    Enviar
-                   </button>
-                  </div>
-                 </div>
-
-            </form>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                            <h2>Suas Informações:</h2>
+                            Mostrar Cirurgia e o Paciente
+                              <?php 
+                                include ("../../conexao.php");
+                                $sql_code = mysql_query();
+                                $result = executar($sql_code);
+                                echo "<table>";
+                                while($exibe = mysql_fetch_assoc($sql)){
+                                  echo "<tr><td>Nome:</td>";
+                                  echo "<td>".$exibe["Nome"]."</td></tr>";
+                                }
+                                echo "</table>";
+                              ?>
+            </div>
+            
+            
         </div>
     </div>
 </div>                 
@@ -126,13 +112,16 @@
           $(document).ready(function(){
           $('.date').mask('00/00/0000');
           $('.crm').mask('0000000');
-          $('.codCons').mask('0000');
           $('.cep').mask('00000-000');
           $('.phone').mask('(00) 0000-0000');
           $('.cpf').mask('000.000.000-00', {reverse: true});
           $('.money').mask('000.000.000.000.000,00', {reverse: true});
           $('.money2').mask("#.##0,00", {reverse: true});
           $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
+          $('.soletras').mask('A', {'translation': {
+                                        A: {pattern: /[A-Za-z]/},
+                                      }
+          });
         });
         </script>
     </body>

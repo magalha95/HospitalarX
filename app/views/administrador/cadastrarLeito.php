@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Remover Leito</title>
+        <title>Cadastrar Leito</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Remover Leito</h1>
+                            <h1>Cadastrar Leito</h1>
                         </div>
                     </div>
                 </div>
@@ -68,10 +68,9 @@
     <div class="container">
         <div class="row">
             <form method="POST" action="../../controllers/administrador/cadastroLeito.php">
-                 
                   <div class="form-group ">
                   <label class="control-label " for="tipoLeito">
-                   Leito a ser Removido
+                   Tipo de Leito:
                    <span class="asteriskField">
                     *
                    </span>
@@ -84,6 +83,13 @@
                   </select>
                  </div>
 
+                 <div class="form-group ">
+                  <label class="control-label requiredField" for="objetosLeito">
+                   Digite os objetos do leito :
+                  </label>
+                  <input class="form-control" id="objetosLeito" name="objetosLeito" placeholder="Digite objetos do leito (Ex:cama, tv)..." type="text"/>
+                 </div>             
+                 
                  <div class="form-group">
                   <div>
                    <button class="btn btn-primary" name="enviar" type="submit">

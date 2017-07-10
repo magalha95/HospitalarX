@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Remover Médico</title>
+        <title>Relatório sobre  Médicos</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Remover Médico</h1>
+                            <h1>Relatório sobre  Médicos</h1>
                         </div>
                     </div>
                 </div>
@@ -67,28 +67,85 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/removeMedico.php">
+
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                            <h2>Suas Informações:</h2>
+                              <?php 
+                                include ("../../conexao.php");
+                                $sql_code = mysql_query();
+                                $result = executar($sql_code);
+                                echo "<table>";
+                                while($exibe = mysql_fetch_assoc($sql)){
+                                  echo "<tr><td>Nome:</td>";
+                                  echo "<td>".$exibe["Nome"]."</td></tr>";
+                                }
+                                echo "</table>";
+                              ?>
+            </div>
+            
+            <form method="POST" action="../../controllers/administrador/obterRelatoriosMedico.php">
+                 
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="registroMedico">
-                   Digite o Registro M&eacute;dico que deseja Remover
+                  <label class="control-label requiredField" for="letraInicial">
+                   Digite uma Letra para obter os médicos :
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
+                  <input class="form-control soletras" id="letraInicial" name="letraInicial" placeholder="Digite uma letra..." type="text"/>
+                 </div>
+
+                  <div class="form-group ">
+                  <label class="control-label " for="obterEstado">
+                   OU selecione um Estado para obter os médicos:
+                   <span class="asteriskField">
+                    *
+                   </span>
+                  </label>
+                  <select  class="form-control" id="obterEstado" name="obterEstado"> 
+                    <option value="estado">Selecione o Estado</option> 
+                    <option value="ac">Acre</option> 
+                    <option value="al">Alagoas</option> 
+                    <option value="am">Amazonas</option> 
+                    <option value="ap">Amapá</option> 
+                    <option value="ba">Bahia</option> 
+                    <option value="ce">Ceará</option> 
+                    <option value="df">Distrito Federal</option> 
+                    <option value="es">Espírito Santo</option> 
+                    <option value="go">Goiás</option> 
+                    <option value="ma">Maranhão</option> 
+                    <option value="mt">Mato Grosso</option> 
+                    <option value="ms">Mato Grosso do Sul</option> 
+                    <option value="mg">Minas Gerais</option> 
+                    <option value="pa">Pará</option> 
+                    <option value="pb">Paraíba</option> 
+                    <option value="pr">Paraná</option> 
+                    <option value="pe">Pernambuco</option> 
+                    <option value="pi">Piauí</option> 
+                    <option value="rj">Rio de Janeiro</option> 
+                    <option value="rn">Rio Grande do Norte</option> 
+                    <option value="ro">Rondônia</option> 
+                    <option value="rs">Rio Grande do Sul</option> 
+                    <option value="rr">Roraima</option> 
+                    <option value="sc">Santa Catarina</option> 
+                    <option value="se">Sergipe</option> 
+                    <option value="sp">São Paulo</option> 
+                    <option value="to">Tocantins</option> 
+                  </select>
                  </div>
                  
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="nomeMedico">
-                   OU digite o Nome do Médico que Deseja Remover
+                  <label class="control-label requiredField" for="obterPais">
+                   OU digite um país para obter os médicos:
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control" id="nomeMedico" name="nomeMedico" placeholder="Digite um nome..." type="text"/>
+                  <input class="form-control" id="obterPais" name="obterPais" placeholder="Digite um estado..." type="text"/>
                  </div>
+
                  
-                 <div class="form-group ">
-                  <label class="control-label " for="cpfMedico">
-                  
-                   OU digite o CPF do Médico que deseja remover
-                  </label>
-                  <input class="form-control cpf" id="cpfMedico" name="cpfMedico" placeholder="Digite um cpf..." type="text"/>
-                 </div>
+
 
                  <div class="form-group">
                   <div>
@@ -132,6 +189,10 @@
           $('.money').mask('000.000.000.000.000,00', {reverse: true});
           $('.money2').mask("#.##0,00", {reverse: true});
           $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
+          $('.soletras').mask('A', {'translation': {
+                                        A: {pattern: /[A-Za-z]/},
+                                      }
+          });
         });
         </script>
     </body>

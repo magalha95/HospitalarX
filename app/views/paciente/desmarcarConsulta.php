@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Remover Consultório para Médico</title>
+        <title>Desmarcar Consulta</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Remover Consultório para Médico</h1>
+                            <h1>Desmarcar Consulta</h1>
                         </div>
                     </div>
                 </div>
@@ -65,19 +65,33 @@
 
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
  <div class="mainbody-section text-center bootstrap-iso">
-    <div class="container">
+    <div class="container">Digite o idConsulta
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/removeConsultorio.php">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                              <?php 
+                                include ("../../conexao.php");
+                                $sql_code = mysql_query();
+                                $result = executar($sql_code);
+                                echo "<table>";
+                                while($exibe = mysql_fetch_assoc($sql)){
+                                  echo "<tr><td>Nome:</td>";
+                                  echo "<td>".$exibe["Nome"]."</td></tr>";
+                                }
+                                echo "</table>";
+                              ?>
+            </div>
+            <form method="POST" action="../../controllers/paciente/desmarcaConsulta.php">
+                 
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="codigoConsultorio">
-                   Digite código Consultório para Remover :
+                  <label class="control-label requiredField" for="idConsulta">
+                   Digite o idConsulta
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control codCons" id="codigoConsultorio" name="codigoConsultorio" placeholder="Digite um registro..." type="text"/>
-                 </div>             
-                 
+                  <input class="form-control" id="idConsulta" name="idConsulta" placeholder="Digite o idConsulta..." type="text"/>
+                 </div>
+
                  <div class="form-group">
                   <div>
                    <button class="btn btn-primary" name="enviar" type="submit">
@@ -114,7 +128,6 @@
           $(document).ready(function(){
           $('.date').mask('00/00/0000');
           $('.crm').mask('0000000');
-          $('.codCons').mask('0000');
           $('.cep').mask('00000-000');
           $('.phone').mask('(00) 0000-0000');
           $('.cpf').mask('000.000.000-00', {reverse: true});

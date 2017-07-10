@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Remover Enfermeiro</title>
+        <title>Remover Consultório para Médico</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Remover Enfermeiro</h1>
+                            <h1>Remover Consultório para Médico</h1>
                         </div>
                     </div>
                 </div>
@@ -67,29 +67,32 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/removeEnfermeiro.php">
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="registroEnfermeiro">
-                   Digite o Registro Enfermeiro que deseja Remover
-                  </label>
-                  <input class="form-control crm" id="registroEnfermeiro" name="registroEnfermeiro" placeholder="Digite um registro..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="nomeEnfermeiro">
-                   OU digite o Nome do Enfermeiro que Deseja Remover
-                  </label>
-                  <input class="form-control" id="nomeEnfermeiro" name="nomeEnfermeiro" placeholder="Digite um nome..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label " for="cpfEnfermeiro">
-                  
-                   OU digite o CPF do Enfermeiro que deseja remover
-                  </label>
-                  <input class="form-control cpf" id="cpfEnfermeiro" name="cpfEnfermeiro" placeholder="Digite um cpf..." type="text"/>
-                 </div>
 
+            <div class="row">
+                      <?php 
+                        include ("../../conexao.php");
+                        $sql_code = mysql_query();
+                        $result = executar($sql_code);
+                        echo "<table>";
+                        while($exibe = mysql_fetch_assoc($sql)){
+                          echo "<tr><td>Nome:</td>";
+                          echo "<td>".$exibe["Nome"]."</td></tr>";
+                        }
+                        echo "</table>";
+                      ?>
+            </div>
+            
+            <form method="POST" action="../../controllers/administrador/removeConsultorio.php">
+                 <div class="form-group ">
+                  <label class="control-label requiredField" for="codigoConsultorio">
+                   Digite código Consultório para Remover :
+                   <span class="asteriskField">
+                    *
+                   </span>
+                  </label>
+                  <input class="form-control codCons" id="codigoConsultorio" name="codigoConsultorio" placeholder="Digite um código..." type="text"/>
+                 </div>             
+                 
                  <div class="form-group">
                   <div>
                    <button class="btn btn-primary" name="enviar" type="submit">
@@ -126,6 +129,7 @@
           $(document).ready(function(){
           $('.date').mask('00/00/0000');
           $('.crm').mask('0000000');
+          $('.codCons').mask('0000');
           $('.cep').mask('00000-000');
           $('.phone').mask('(00) 0000-0000');
           $('.cpf').mask('000.000.000-00', {reverse: true});

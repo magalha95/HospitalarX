@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Conselho Presidente</title>
+        <title>Paciente</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Conselho Presidente</h1>
+                            <h1>Paciente</h1>
                         </div>
                     </div>
                 </div>
@@ -59,59 +59,43 @@
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">
-                    
-                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        
+                        <div class="col-md-12 col-sm-6 col-xs-12">
+                            <h2>Suas Informações:</h2>
+                              <?php 
+                                include ("../../conexao.php");
+                                $sql_code = mysql_query();
+                                $result = executar($sql_code);
+                                echo "<table>";
+                                while($exibe = mysql_fetch_assoc($sql)){
+                                  echo "<tr><td>Nome:</td>";
+                                  echo "<td>".$exibe["Nome"]."</td></tr>";
+                                }
+                                echo "</table>";
+                              ?>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="feature botao-plus">
-                                <a href="/HospitalarX/app/views/presidente/relatoriosMedicos.php" data-toggle="modal">
-                                    <i class="fa fa-user-md"></i>
+                                <a href="/HospitalarX/app/views/paciente/marcarConsulta.php" data-toggle="modal">
+                                    <i class="fa fa-clipboard"></i>
                                     <div class="feature-content">
-                                        <h3>Solicita Relatório sobre os Médicos</h3>
+                                        <h3>Marcar Consulta</h3>
                                     </div>
                                 </a>
                             </div>
                         </div><!-- /.col-md-2 -->
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="feature botao-plus">
-                                <a href="/HospitalarX/app/views/presidente/relatoriosEnfermeiros.php" data-toggle="modal">
-                                    <i class="fa fa-medkit"></i>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="feature">
+                                <a href="/HospitalarX/app/views/paciente/desmarcarConsulta.php" data-toggle="modal">
+                                    <i class="fa fa-clipboard"></i>
                                     <div class="feature-content">
-                                        <h3>Solicita Relatório sobre os Enfermeiros</h3>
+                                        <h3>Desmarcar Consulta</h3>
                                     </div>
                                 </a>   
                             </div>
-                        </div><!-- /.col-md-2 -->
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="feature botao-plus">
-                                <a href="/HospitalarX/app/views/presidente/relatoriosPacientes.php" data-toggle="modal">
-                                    <i class="fa fa-group "></i>
-                                    <div class="feature-content">
-                                        <h3>Solicita Relatório sobre os Pacientes</h3>
-                                    </div>
-                                </a>    
-                            </div>
-                        </div><!-- /.col-md-2 -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="feature botao-plus">
-                                <a href="/HospitalarX/app/views/presidente/relatoriosCirurgias.php" data-toggle="modal">    
-                                    <i class="fa fa-clipboard"></i>
-                                    <div class="feature-content">
-                                        <h3>Solicita Relatórios sobre Cirurgias</h3>
-                                    </div>
-                                </a>    
-                            </div>
-                        </div><!-- /.col-md-2 -->
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="feature botao-plus">
-                                <a href="/HospitalarX/app/views/presidente/relatoriosConsultorios.php" data-toggle="modal">    
-                                    <i class="fa fa-hospital-o"></i>
-                                    <div class="feature-content">
-                                        <h3>Solicita Relatórios sobre Consultórios</h3>
-                                    </div>
-                                </a>    
-                            </div>
-                        </div><!-- /.col-md-2 -->
-
-                </div>              
+                        </div><!-- /.col-md-2 -->                    
+                </div>                  
             </div>
         </div>
         <!-- End Main Body Section -->
