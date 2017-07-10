@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="Ítalo Magalhães da Silva" content="">
 
-        <title>Administrador</title>
+        <title>Cadastrar Enfermeiro</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/HospitalarX/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Cadastrar Médico</h1>
+                            <h1>Cadastrar Enfermeiro</h1>
                         </div>
                     </div>
                 </div>
@@ -67,81 +67,105 @@
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-            <form method="POST" action="../../controllers/administrador/cadastroMedico.php">
+            <form method="POST" action="../../controllers/administrador/cadastroEnfermeiro.php">
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="registroMedico">
-                   Registro M&eacute;dico
+                  <label class="control-label requiredField" for="registroEnfermeiro">
+                   Registro Enfermeiro
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
+                  <input class="form-control crm" id="registroEnfermeiro" name="registroEnfermeiro" placeholder="Digite um registro..." type="text"/>
                  </div>
                  
                  <div class="form-group ">
-                  <label class="control-label requiredField" for="nomeMedico">
+                  <label class="control-label requiredField" for="nomeEnfermeiro">
                    Nome
                    <span class="asteriskField">
                     *
                    </span>
                   </label>
-                  <input class="form-control" id="nomeMedico" name="nomeMedico" placeholder="Digite um nome..." type="text"/>
+                  <input class="form-control" id="nomeEnfermeiro" name="nomeEnfermeiro" placeholder="Digite um nome..." type="text"/>
                  </div>
                  
                  <div class="form-group ">
-                  <label class="control-label " for="cpfMedico">
+                  <label class="control-label " for="cpfEnfermeiro">
                    CPF
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control cpf" id="cpfMedico" name="cpfMedico" placeholder="Digite um cpf..." type="text"/>
+                  <input class="form-control cpf" id="cpfEnfermeiro" name="cpfEnfermeiro" placeholder="Digite um cpf..." type="text"/>
                  </div>
              
                  <div class="form-group ">
-                  <label class="control-label " for="dataMedico">
+                  <label class="control-label " for="dataEnfermeiro">
                    Data Nascimento
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control date" id="dataMedico" name="dataMedico" placeholder="MM/DD/YYYY" type="text"/>
+                  <input class="form-control date" id="dataEnfermeiro" name="dataEnfermeiro" placeholder="MM/DD/YYYY" type="text"/>
                  </div>
 
                  <div class="form-group ">
-                  <label class="control-label " for="ruaMedico">
+                  <label class="control-label " for="ruaEnfermeiro">
                    Rua
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control" id="ruaMedico" name="ruaMedico" placeholder="Digite uma rua..." type="text"/>
+                  <input class="form-control" id="ruaEnfermeiro" name="ruaEnfermeiro" placeholder="Digite uma rua..." type="text"/>
                  </div>
              
                  <div class="form-group ">
-                  <label class="control-label " for="numeroMedico">
+                  <label class="control-label " for="numeroEnfermeiro">
                    Numero
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control number" id="numeroMedico" name="numeroMedico" placeholder="Digite um numero..." type="text"/>
+                  <input class="form-control number" id="numeroEnfermeiro" name="numeroEnfermeiro" placeholder="Digite um numero..." type="text"/>
                  </div>
 
                  <div class="form-group ">
-                  <label class="control-label " for="bairroMedico">
+                  <label class="control-label " for="bairroEnfermeiro">
                    Bairro
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control" id="bairroMedico" name="bairroMedico" placeholder="Digite um bairro..." type="text"/>
+                  <input class="form-control" id="bairroEnfermeiro" name="bairroEnfermeiro" placeholder="Digite um bairro..." type="text"/>
                  </div>
              
                  <div class="form-group ">
-                  <label class="control-label " for="cepMedico">
+                  <label class="control-label " for="cepEnfermeiro">
                    CEP
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control cep" id="cepMedico" name="cepMedico" placeholder="Digite um CEP..." type="text"/>
+                  <input class="form-control cep" id="cepEnfermeiro" name="cepEnfermeiro" placeholder="Digite um CEP..." type="text"/>
                  </div>
 
                  <div class="form-group ">
-                  <label class="control-label " for="cidadeMedico">
+                  <label class="control-label " for="cidadeEnfermeiro">
                    Cidade
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control" id="cidadeMedico" name="cidadeMedico" placeholder="Digite uma cidade" type="text"/>
+                  <input class="form-control" id="cidadeEnfermeiro" name="cidadeEnfermeiro" placeholder="Digite uma cidade" type="text"/>
                  </div>
              
                  <div class="form-group ">
-                  <label class="control-label " for="estadoMedico">
+                  <label class="control-label " for="estadoEnfermeiro">
                    Estado
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <select  class="form-control" id="estadoMedico" name="estadoMedico"> 
+                  <select  class="form-control" id="estadoEnfermeiro" name="estadoEnfermeiro"> 
                     <option value="estado">Selecione o Estado</option> 
                     <option value="ac">Acre</option> 
                     <option value="al">Alagoas</option> 
@@ -174,10 +198,13 @@
                  </div>
                  
                  <div class="form-group ">
-                  <label class="control-label " for="paisMedico">
+                  <label class="control-label " for="paisEnfermeiro">
                    Pa&iacute;s
+                   <span class="asteriskField">
+                    *
+                   </span>
                   </label>
-                  <input class="form-control" id="paisMedico" name="paisMedico" placeholder="Digite um pa&iacute;s..." type="text"/>
+                  <input class="form-control" id="paisEnfermeiro" name="paisEnfermeiro" placeholder="Digite um pa&iacute;s..." type="text"/>
                  </div>
 
                  <div class="form-group">
@@ -202,7 +229,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div>Desenvolvido por Ítalo Magalhães da Silva</div>
+                        <div>Desenvolvido por Ítalo Magalhães da Silva, Lucas Félix e Ygor Magalhães</div>
                     </div>
                 </div>
             </div>
