@@ -61,29 +61,74 @@
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">
-                  
+<div class="mainbody-section text-center bootstrap-iso">
+    <div class="container">
+        <div class="row">
+   <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                          <div class="panel-heading">Médicos Cadastrados</div>
+                          <div class="panel-body"></div>   
+
+                      <?php 
+                              include ("../../conexao.php");
+                              $sql_code = "SELECT * FROM Medico";
+                              if(isset($_POST['enviar'])){
+                                if(strlen(utf8_decode($_POST['letraInicial'])) >  0){
+                                    
+                                    $sql_code = "SELECT * FROM Medico WHERE nome LIKE '".$_POST['letraInicial']."%'";
+                                  }else  if(strlen(utf8_decode($_POST['obterEstado'])) >  0){
+
+
+                                  $sql_code = "SELECT * FROM Endereco as e
+                                      INNER JOIN Medico as m
+                                      ON m.Endereco_idPessoa = e.idPessoa
+                                      WHERE e.estado = '".$_POST['obterEstado']."'";
+
+                                  }else  if(strlen(utf8_decode($_POST['obterPais'])) >  0){
+
+                                     $sql_code = "SELECT * FROM Endereco as e
+                                      INNER JOIN Medico as m
+                                      ON m.Endereco_idPessoa = e.idPessoa
+                                      WHERE e.pais = '".$_POST['obterPais']."'";
+
+                                  } else {
+                                    $sql_code = "SELECT * FROM Medico";
+                                  }
+
+                              } else {
+                                $sql_code = "SELECT * FROM Medico";
+                              }
+                              $result = executar($sql_code);
+                                echo "<table class='table'>";
+                         
+                              if(mysql_num_rows($result) != 0){
+                                echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
+                             
+                                while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                  echo "<tr><td>".$exibe["registro"]."</td>";
+                                  echo "<td>".$exibe["cpf"]."</td>";
+                                  echo "<td>".$exibe["nome"]."</td></tr>";
+                                }
+                            } else {
+                              echo "<tr><td> Não foi encontrado nenhum médico para esses valores</td><tr>";
+                            }
+                            echo "</table> </div>  ";
+                            
+?>
+</div></div> </div></div></div>
+       <div class="mainbody-section text-center">
+            <div class="container">
+                <div class="row">
 
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
  <div class="mainbody-section text-center bootstrap-iso">
     <div class="container">
         <div class="row">
-
             <div class="col-md-12 col-sm-6 col-xs-12">
                             <h2>Suas Informações:</h2>
-                              <?php 
-                                include ("../../conexao.php");
-                                $sql_code = mysql_query();
-                                $result = executar($sql_code);
-                                echo "<table>";
-                                while($exibe = mysql_fetch_assoc($sql)){
-                                  echo "<tr><td>Nome:</td>";
-                                  echo "<td>".$exibe["Nome"]."</td></tr>";
-                                }
-                                echo "</table>";
-                              ?>
             </div>
             
-            <form method="POST" action="../../controllers/administrador/obterRelatoriosMedico.php">
+            <form method="POST" action="">
                  
                  <div class="form-group ">
                   <label class="control-label requiredField" for="letraInicial">
@@ -103,7 +148,7 @@
                    </span>
                   </label>
                   <select  class="form-control" id="obterEstado" name="obterEstado"> 
-                    <option value="estado">Selecione o Estado</option> 
+                    <option value="">Selecione o Estado</option> 
                     <option value="ac">Acre</option> 
                     <option value="al">Alagoas</option> 
                     <option value="am">Amazonas</option> 

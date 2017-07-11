@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 11, 2017 at 12:09 
+-- Generation Time: Jul 11, 2017 at 05:59 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -57,7 +57,7 @@ CREATE TABLE `Consulta` (
 
 CREATE TABLE `Consultorio` (
   `codConsultorio` int(11) NOT NULL,
-  `telefone` int(11) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
   `Medico_registro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

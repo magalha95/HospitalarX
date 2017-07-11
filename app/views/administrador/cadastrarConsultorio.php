@@ -61,7 +61,43 @@
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">
-                  
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                          <div class="panel-heading">Consultórios Cadastrados</div>
+                          <div class="panel-body"></div>   
+
+                      <?php 
+                              include ("../../conexao.php");
+                              $sql_code = "SELECT * FROM Consultorio";
+                              $result = executar($sql_code);
+                              echo "<table class='table'>";
+                              echo "<tr><td> Cod: </td> <td> Telefone </td> <td> RegMedico </tr>";
+                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                echo "<tr><td>".$exibe["codConsultorio"]."</td>";
+                                echo "<td>".$exibe["telefone"]."</td>";
+                                echo "<td>".$exibe["Medico_registro"]."</td></tr>";
+                              }
+                              echo "</table> </div> ";
+                              ?>
+
+
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                          <div class="panel-heading">Médicos Cadastrados</div>
+                          <div class="panel-body"></div>   
+
+                      <?php 
+                              $sql_code = "SELECT * FROM Medico";
+                              $result = executar($sql_code);
+                              echo "<table class='table'>";
+                              echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
+                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                echo "<tr><td>".$exibe["registro"]."</td>";
+                                echo "<td>".$exibe["cpf"]."</td>";
+                                echo "<td>".$exibe["nome"]."</td></tr>";
+                              }
+                              echo "</table> </div> ";
+                              ?>
 
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
  <div class="mainbody-section text-center bootstrap-iso">

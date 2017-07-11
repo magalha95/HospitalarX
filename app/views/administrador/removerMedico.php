@@ -64,8 +64,8 @@
                       <div class="panel panel-default">
                         <!-- Default panel contents -->
                           <div class="panel-heading">Médicos Cadastrados</div>
-                          <div class="panel-body">
-                      </div>                         
+                          <div class="panel-body"></div>   
+
                       <?php 
                               include ("../../conexao.php");
                               $sql_code = "SELECT * FROM Medico";
@@ -77,24 +77,38 @@
                                 echo "<td>".$exibe["cpf"]."</td>";
                                 echo "<td>".$exibe["nome"]."</td></tr>";
                               }
-                              echo "</table>";
+                              echo "</table> </div>  ";
 
                               if(isset($_POST["enviar"])){
                                 if(isset($_POST["registroMedico"])){
                                   $sql_code= "DELETE FROM Medico 
                                   WHERE registro = ".$_POST['registroMedico'];
-
+                                  $result = executar($sql_code);
+                                  if(!$result){
+                                  echo '<div class="alert alert-danger" role="alert">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Error:</span>
+                                        Registro inválido ou inexistente!
+                                        </div>';
+                                  }else {
+                                      echo '<div class="alert alert-success" role="alert">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Sucesso:</span>
+                                          Médico removido com sucesso
+                                        </div>';
+                                  }
                                 }
                               }
                       ?>
-                </div>
-            </div>  
         <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+      <div class="mainbody-section text-center">
+
         <div class="mainbody-section text-center bootstrap-iso">
     
                 <div class="container">
 
                     <div class="row">
+
                         <form method="POST" action="">
                              <div class="form-group ">
                               <label class="control-label requiredField" for="registroMedico">
@@ -110,6 +124,7 @@
                               </div>
                              </div>
                         </form>
+                        </div>
                     </div>
                 </div>               
                 </div>
