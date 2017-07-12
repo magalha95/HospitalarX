@@ -63,52 +63,48 @@
                 <div class="row">
                   
 
-<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
- <div class="mainbody-section text-center bootstrap-iso">
-    <div class="container">
-        <div class="row">
+                      <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+                       <div class="mainbody-section text-center bootstrap-iso">
+                          <div class="container">
+                              
+                                 <div class="panel panel-default">
+                                      <!-- Default panel contents -->
+                                      <div class="panel-heading">Enfermeiros Cadastrados</div> 
+                                      <?php 
+                                              include ("../../conexao.php");
+                                              $sql_code = "SELECT * FROM Enfermeiro";
+                                              $result = executar($sql_code);
+                                              echo "<table class='table'>";
+                                              echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </td> <td> Horas de Plantao</td> </tr>";
+                                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                                echo "<tr><td>".$exibe["registro"]."</td>";
+                                                echo "<td>".$exibe["cpf"]."</td>";
+                                                echo "<td>".$exibe["nome"]."</td>";
+                                                echo "<td>".$exibe["horasPlantao"]."</td></tr>";
+                                              }
+                                              echo "</table> </div> ";                                              
+                                      ?>
+                                  </div>
+                                  
+                                  <form method="POST" action="../../controllers/administrador/removeEnfermeiro.php">
+                                       <div class="form-group ">
+                                        <label class="control-label requiredField" for="registroEnfermeiro">
+                                         Digite o Registro Enfermeiro que deseja Remover
+                                        </label>
+                                        <input class="form-control crm" id="registroEnfermeiro" name="registroEnfermeiro" placeholder="Digite um registro..." type="text"/>
+                                       </div>
 
-            <div class="row">
-                      <?php 
-                        include ("../../conexao.php");
-                        $sql_code = mysql_query();
-                        $result = executar($sql_code);
-                        echo "<table>";
-                        while($exibe = mysql_fetch_assoc($sql)){
-                          echo "<tr><td>Nome:</td>";
-                          echo "<td>".$exibe["Nome"]."</td></tr>";
-                        }
-                        echo "</table>";
-                      ?>
-            </div>
-            
-            <form method="POST" action="../../controllers/administrador/removeEnfermeiro.php">
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="registroEnfermeiro">
-                   Digite o Registro Enfermeiro que deseja Remover
-                  </label>
-                  <input class="form-control crm" id="registroEnfermeiro" name="registroEnfermeiro" placeholder="Digite um registro..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="nomeEnfermeiro">
-                   OU digite o Nome do Enfermeiro que Deseja Remover
-                  </label>
-                  <input class="form-control" id="nomeEnfermeiro" name="nomeEnfermeiro" placeholder="Digite um nome..." type="text"/>
-                 </div>
+                                       <div class="form-group">
+                                        <div>
+                                         <button class="btn btn-primary" name="enviar" type="submit">
+                                          Enviar
+                                         </button>
+                                        </div>
+                                       </div>
 
-                 <div class="form-group">
-                  <div>
-                   <button class="btn btn-primary" name="enviar" type="submit">
-                    Enviar
-                   </button>
-                  </div>
-                 </div>
-
-            </form>
-        </div>
-    </div>
-</div>                 
+                                  </form>
+                          </div>
+                      </div>                 
                 </div>
             </div>
         </div>

@@ -29,7 +29,6 @@
 		}else{
 			echo "Erro ao cadastrar o Consultorio";
 			echo "<script> setTimeout(\"location.href = '../../views/administrador/cadastrarConsultorio.php';\", 1500); </script>";
-
 		}
 		
 	}

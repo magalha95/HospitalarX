@@ -61,56 +61,47 @@
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">
-                  
+                      <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+                       <div class="mainbody-section text-center bootstrap-iso">
+                          <div class="container">
+                              
+                                  <div class="panel panel-default">
+                                      <!-- Default panel contents -->
+                                      <div class="panel-heading">Leitos Cadastrados</div> 
+                                      <?php 
+                                             include ("../../conexao.php");
+                                              $sql_code = "SELECT * FROM Leito";
+                                              $result = executar($sql_code);
+                                              echo "<table class='table'>";
+                                              echo "<tr><td> codigoLeito: </td> <td> Tipo: </td> <td> Objetos: </tr>";
+                                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                                echo "<tr><td>".$exibe["idLeito"]."</td>";
+                                                echo "<td>".$exibe["tipo"]."</td>";
+                                                echo "<td>".$exibe["objetos"]."</td></tr>";
+                                              }
+                                              echo "</table> </div> ";                                              
+                                      ?>
+                                  </div>
+                                  
+                                  <form method="POST" action="../../controllers/administrador/removeLeito.php">                
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="codigoLeito">
+                                             Digite o código do leito para remover :
+                                            </label>
+                                            <input class="form-control codLeit" id="codigoLeito" name="codigoLeito" placeholder="Digite o código do leito..." type="text"/>
+                                       </div> 
+                                       
+                                       <div class="form-group">
+                                        <div>
+                                         <button class="btn btn-primary" name="enviar" type="submit">
+                                          Enviar
+                                         </button>
+                                        </div>
+                                       </div>
 
-<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
- <div class="mainbody-section text-center bootstrap-iso">
-    <div class="container">
-        <div class="row">
-            
-            <div class="row">
-                      <?php 
-                        include ("../../conexao.php");
-                        $sql_code = mysql_query();
-                        $result = executar($sql_code);
-                        echo "<table>";
-                        while($exibe = mysql_fetch_assoc($sql)){
-                          echo "<tr><td>Nome:</td>";
-                          echo "<td>".$exibe["Nome"]."</td></tr>";
-                        }
-                        echo "</table>";
-                      ?>
-            </div>
-            
-            <form method="POST" action="../../controllers/administrador/cadastroLeito.php">                
-                  
-                  <div class="form-group ">
-                    <label class="control-label " for="tipoLeito">
-                     Leitos a serem Removidos
-                     <span class="asteriskField">
-                      *
-                     </span>
-                    </label>
-                    <select  class="form-control" id="tipoLeito" name="tipoLeito"> 
-                      <option value="estado">Selecione o Leito</option> 
-                      <option value="uti">Leito UTI</option> 
-                      <option value="quarto">Leito Quarto</option> 
-                      <option value="cirurgico">Leito Cirurgico</option>  
-                    </select>
-                  </div>
-
-                 <div class="form-group">
-                  <div>
-                   <button class="btn btn-primary" name="enviar" type="submit">
-                    Enviar
-                   </button>
-                  </div>
-                 </div>
-
-            </form>
-        </div>
-    </div>
-</div>                 
+                                  </form>
+                          </div>
+                      </div>                 
                 </div>
             </div>
         </div>

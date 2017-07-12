@@ -17,9 +17,7 @@
 			$erro[]= "Digite o nome do médico.";
 			$cont++;
 		}
-
-		#if (!preg_match("^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$", $valores['cpfMedico'])) 
-		#	$erro[]= "Digite um CPF válido.";
+			
 
 		if (!(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/', $valores['dataMedico']))){
 			$erro[]= "Digite uma data válida Ex: DD/MM/YYYY";
@@ -61,9 +59,7 @@
 			$cont++;
 		}
 		 if ($cont == 0) {
-			/*3-Salvar no banco*/
-			// include("../../models/administrador/cadastroMedico.php");
-			// $modelCadastroMedico = new cadastroMedico($valores['registroMedico'], $valores['nomeMedico'], $valores['cpfMedico'], $valores['dataMedico'], $valores['numeroMedico'], $valores['cepMedico'], $valores['cidadeMedico'],$valores['estadoMedico'],$valores['paisMedico']);
+			
 			$sql_code =  "INSERT INTO Endereco (
 					idPessoa,
 					rua,

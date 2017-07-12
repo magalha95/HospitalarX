@@ -60,97 +60,101 @@
         <!-- Start Main Body Section -->
         <div class="mainbody-section text-center">
             <div class="container">
-                <div class="row">
-                    <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                          <div class="panel-heading">Consultórios Cadastrados</div>
-                          <div class="panel-body"></div>   
-
-                      <?php 
-                              include ("../../conexao.php");
-                              $sql_code = "SELECT * FROM Consultorio";
-                              $result = executar($sql_code);
-                              echo "<table class='table'>";
-                              echo "<tr><td> Cod: </td> <td> Telefone </td> <td> RegMedico </tr>";
-                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
-                                echo "<tr><td>".$exibe["codConsultorio"]."</td>";
-                                echo "<td>".$exibe["telefone"]."</td>";
-                                echo "<td>".$exibe["Medico_registro"]."</td></tr>";
-                              }
-                              echo "</table> </div> ";
+                      <div class="panel panel-default">
+                          <!-- Default panel contents -->
+                            <div class="panel-heading">Consultórios Cadastrados</div>   
+                              <?php 
+                                      include ("../../conexao.php");
+                                      $sql_code = "SELECT * FROM Consultorio";
+                                      $result = executar($sql_code);
+                                      echo "<table class='table'>";
+                                      echo "<tr><td> Codigo: </td> <td> Telefone: </td> <td> Registro Medico </tr>";
+                                      while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                        echo "<tr><td>".$exibe["codConsultorio"]."</td>";
+                                        echo "<td>".$exibe["telefone"]."</td>";
+                                        echo "<td>".$exibe["Medico_registro"]."</td></tr>";
+                                      }
+                                      echo "</table> </div> ";
                               ?>
-
-
-                     <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                          <div class="panel-heading">Médicos Cadastrados</div>
-                          <div class="panel-body"></div>   
-
-                      <?php 
-                              $sql_code = "SELECT * FROM Medico";
-                              $result = executar($sql_code);
-                              echo "<table class='table'>";
-                              echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
-                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
-                                echo "<tr><td>".$exibe["registro"]."</td>";
-                                echo "<td>".$exibe["cpf"]."</td>";
-                                echo "<td>".$exibe["nome"]."</td></tr>";
-                              }
-                              echo "</table> </div> ";
-                              ?>
-
-<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
- <div class="mainbody-section text-center bootstrap-iso">
-    <div class="container">
-        <div class="row">
-            <form method="POST" action="../../controllers/administrador/cadastroConsultorio.php">
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="codigoConsultorio">
-                   Digite código Consultório :
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control codCons" id="codigoConsultorio" name="codigoConsultorio" placeholder="Digite um codigo..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label requiredField" for="telefoneConsultorio">
-                   Digite o Telefone Consultório:
-                   <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control phone" id="telefoneConsultorio" name="telefoneConsultorio" placeholder="Digite um telefone..." type="text"/>
-                 </div>
-                 
-                 <div class="form-group ">
-                  <label class="control-label " for="registroMedico">
-                    Digite o Registro Médico para cadastar um consultório para ele:
-                    <span class="asteriskField">
-                    *
-                   </span>
-                  </label>
-                  <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro de Medico..." type="text"/>
-                 </div>
-             
-                 
-                 <div class="form-group">
-                  <div>
-                   <button class="btn btn-primary" name="enviar" type="submit">
-                    Enviar
-                   </button>
-                  </div>
-                 </div>
-
-            </form>
-        </div>
-    </div>
-</div>                 
-                </div>
+                      </div>                              
             </div>
         </div>
         <!-- End Main Body Section -->
+
+        <!-- Start Main Body Section -->
+        <div class="mainbody-section text-center">
+            <div class="container">
+                        <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                        <div class="panel-heading">Médicos Cadastrados</div>   
+                          <?php 
+                                  $sql_code = "SELECT * FROM Medico";
+                                  $result = executar($sql_code);
+                                  echo "<table class='table'>";
+                                  echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
+                                  while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                    echo "<tr><td>".$exibe["registro"]."</td>";
+                                    echo "<td>".$exibe["cpf"]."</td>";
+                                    echo "<td>".$exibe["nome"]."</td></tr>";
+                                  }
+                                  echo "</table> </div> ";
+                          ?>
+                      </div>
+            </div>
+        </div>
+        <!-- End Main Body Section -->
+
+        <!-- Start Main Body Section -->
+        <div class="mainbody-section text-center">
+            <div class="container">
+                    <div class="mainbody-section text-center bootstrap-iso">
+                          
+                                <form method="POST" action="../../controllers/administrador/cadastroConsultorio.php">
+                                     <div class="form-group">
+                                      <label class="control-label requiredField" for="codigoConsultorio">
+                                       Digite código Consultório :
+                                       <span class="asteriskField">
+                                        *
+                                       </span>
+                                      </label>
+                                      <input class="form-control codCons " id="codigoConsultorio" name="codigoConsultorio" placeholder="Digite um codigo..." type="text"/>
+                                     </div>
+                                     
+                                     <div class="form-group ">
+                                      <label class="control-label requiredField" for="telefoneConsultorio">
+                                       Digite o Telefone Consultório:
+                                       <span class="asteriskField">
+                                        *
+                                       </span>
+                                      </label>
+                                      <input class="form-control phone" id="telefoneConsultorio" name="telefoneConsultorio" placeholder="Digite um telefone..." type="text"/>
+                                     </div>
+                                     
+                                     <div class="form-group ">
+                                      <label class="control-label " for="registroMedico">
+                                        Digite o Registro Médico para cadastar um consultório para ele:
+                                        <span class="asteriskField">
+                                        *
+                                       </span>
+                                      </label>
+                                      <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro de Medico..." type="text"/>
+                                     </div>
+                                 
+                                     
+                                     <div class="form-group">
+                                      <div>
+                                       <button class="btn btn-primary" name="enviar" type="submit">
+                                        Enviar
+                                       </button>
+                                      </div>
+                                     </div>
+
+                                </form>
+                    </div>  
+            </div>
+        </div>
+        <!-- End Main Body Section -->
+
 
         <!-- Start Copyright Section -->
         <div class="copyright text-center">

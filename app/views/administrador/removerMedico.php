@@ -61,72 +61,46 @@
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">
-                      <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                          <div class="panel-heading">Médicos Cadastrados</div>
-                          <div class="panel-body"></div>   
+                      <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+                       <div class="mainbody-section text-center bootstrap-iso">
+                          <div class="container">
+                              
+                                  <div class="panel panel-default">
+                                      <!-- Default panel contents -->
+                                      <div class="panel-heading">Médicos Cadastrados</div> 
+                                      <?php 
+                                              include ("../../conexao.php");
+                                              $sql_code = "SELECT * FROM Medico";
+                                              $result = executar($sql_code);
+                                              echo "<table class='table'>";
+                                              echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
+                                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
+                                                echo "<tr><td>".$exibe["registro"]."</td>";
+                                                echo "<td>".$exibe["cpf"]."</td>";
+                                                echo "<td>".$exibe["nome"]."</td></tr>";
+                                              }
+                                              echo "</table> </div> ";                                              
+                                      ?>
+                                  </div>  
+                                  
+                                  <form method="POST" action="../../controllers/administrador/removeMedico.php">
+                                       <div class="form-group ">
+                                          <label class="control-label requiredField" for="registroMedico">
+                                           Digite o Registro M&eacute;dico que deseja Remover
+                                          </label>
+                                          <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
+                                       </div>                     
+                                       <div class="form-group">
+                                        <div>
+                                           <button class="btn btn-primary" name="enviar" type="submit">
+                                            Enviar
+                                           </button>
+                                        </div>
+                                       </div>
+                                  </form>
 
-                      <?php 
-                              include ("../../conexao.php");
-                              $sql_code = "SELECT * FROM Medico";
-                              $result = executar($sql_code);
-                              echo "<table class='table'>";
-                              echo "<tr><td> Registro: </td> <td> CPF </td> <td> Nome </tr>";
-                              while($exibe =  mysql_fetch_array($result, MYSQL_ASSOC)){
-                                echo "<tr><td>".$exibe["registro"]."</td>";
-                                echo "<td>".$exibe["cpf"]."</td>";
-                                echo "<td>".$exibe["nome"]."</td></tr>";
-                              }
-                              echo "</table> </div>  ";
-
-                              if(isset($_POST["enviar"])){
-                                if(isset($_POST["registroMedico"])){
-                                  $sql_code= "DELETE FROM Medico 
-                                  WHERE registro = ".$_POST['registroMedico'];
-                                  $result = executar($sql_code);
-                                  if(!$result){
-                                  echo '<div class="alert alert-danger" role="alert">
-                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                        <span class="sr-only">Error:</span>
-                                        Registro inválido ou inexistente!
-                                        </div>';
-                                  }else {
-                                      echo '<div class="alert alert-success" role="alert">
-                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                        <span class="sr-only">Sucesso:</span>
-                                          Médico removido com sucesso
-                                        </div>';
-                                  }
-                                }
-                              }
-                      ?>
-        <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
-      <div class="mainbody-section text-center">
-
-        <div class="mainbody-section text-center bootstrap-iso">
-    
-                <div class="container">
-
-                    <div class="row">
-
-                        <form method="POST" action="">
-                             <div class="form-group ">
-                              <label class="control-label requiredField" for="registroMedico">
-                               Digite o Registro M&eacute;dico que deseja Remover
-                              </label>
-                              <input class="form-control crm" id="registroMedico" name="registroMedico" placeholder="Digite um registro..." type="text"/>
-                             </div>                     
-                             <div class="form-group">
-                              <div>
-                               <button class="btn btn-primary" name="enviar" type="submit">
-                                Enviar
-                               </button>
-                              </div>
-                             </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>               
+                          </div>
+                      </div>                 
                 </div>
             </div>
         </div>

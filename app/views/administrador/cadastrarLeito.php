@@ -68,6 +68,15 @@
     <div class="container">
         <div class="row">
             <form method="POST" action="../../controllers/administrador/cadastroLeito.php">
+                  
+                  <div class="form-group ">
+                  <label class="control-label requiredField" for="codigoLeito">
+                   Digite o código do leito :
+                  </label>
+                  <input class="form-control codLeit" id="codigoLeito" name="codigoLeito" placeholder="Digite o código do leito..." type="text"/>
+                 </div>   
+
+
                   <div class="form-group ">
                   <label class="control-label " for="tipoLeito">
                    Tipo de Leito:
@@ -127,6 +136,7 @@
           $('.date').mask('00/00/0000');
           $('.crm').mask('0000000');
           $('.codCons').mask('0000');
+          $('.codLeit').mask('0000');
           $('.cep').mask('00000-000');
           $('.phone').mask('(00) 0000-0000');
           $('.cpf').mask('000.000.000-00', {reverse: true});
